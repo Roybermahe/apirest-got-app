@@ -1,12 +1,20 @@
 import { NestFactory } from '@nestjs/core';
+// import { SwaggerModule, DocumentBuilder, } from '@nestjs/swagger'
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  console.log('ESCUCHANDO EN PUERTO 3000');
-  console.log('ESCUCHANDO EN PUERTO 5500');
-  console.log('hola mundo');
-  await app.listen(3000);
+/*  
+--> swagger implementation for future features
+const options = new DocumentBuilder()
+    .setTitle('GotApp ApiREST')
+    .setDescription('GotApp Api Rest designed with nest.js')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('apiGUI', app, document); 
+  --------------------------------------------*/
+  await app.listen(process.env.PORT || 3000);
 }
 
 bootstrap();
