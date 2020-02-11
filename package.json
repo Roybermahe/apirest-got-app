@@ -22,10 +22,11 @@
   "dependencies": {
     "@nestjs/common": "^6.10.14",
     "@nestjs/core": "^6.10.14",
-    "@nestjs/platform-express": "^6.10.14",
+    "@nestjs/platform-express": "^6.11.6",
     "@nestjs/swagger": "^4.2.7",
     "@nestjs/typeorm": "^6.2.0",
     "blueimp-md5": "^2.12.0",
+    "express": "^4.17.1",
     "mariadb": "^2.2.0",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
