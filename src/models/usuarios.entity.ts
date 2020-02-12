@@ -5,7 +5,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class usuarios {
     @ApiProperty()
     @PrimaryGeneratedColumn()
-    Id: number;
+    Id?: number;
 
     @ApiProperty()
     @Column({ length: 20 })
@@ -17,5 +17,5 @@ export class usuarios {
 
     @ApiProperty()
     @Column({ length: 3 })
-    Type: string;
+    Type?: string;
 }
