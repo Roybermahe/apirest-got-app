@@ -12,9 +12,9 @@ export class InicioSesion {
         return this.sesion.getUsers();
     }
 
-    @Post(':User&:Pass')
-    async getSesion(@Param() params) {
-        let usuario = (await this.sesion.getSesion()).filter(item => item.Pass === params.Pass && item.User === params.User);
+    @Post()
+    async getSesion(@Body() peticion: usuarios) {
+        let usuario = (await this.sesion.getSesion()).filter(item => item.Pass === peticion.Pass && item.User === peticion.User);
         return usuario.length == 1 ? { token: md5("TOKENID_USUARIO_NUMBER_" + usuario + "-TOK-"), Id: usuario[0].Id } : '';
     }
 
