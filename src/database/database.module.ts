@@ -3,7 +3,8 @@ import { databaseProviders } from './database.providers';
 import { 
     usuariosProviders,
     clientesProviders,
-    cobradorProviders 
+    cobradorProviders, 
+    rutasProvider
 } from "./Entitys.providers";
 
 @Module({
@@ -11,13 +12,15 @@ import {
         ...databaseProviders, 
         ...usuariosProviders,
         ...clientesProviders,
-        ...cobradorProviders
+        ...cobradorProviders,
+        ...rutasProvider
     ],
     exports: [
         ...databaseProviders, 
         ...usuariosProviders,
         ...clientesProviders,
-        ...cobradorProviders
+        ...cobradorProviders,
+        ...rutasProvider
     ],
 })
 

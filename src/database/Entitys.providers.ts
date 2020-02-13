@@ -2,6 +2,7 @@ import { Connection, Repository } from 'typeorm';
 import { usuarios } from  '../models/usuarios.entity';
 import { cliente } from 'src/models/cliente.entity';
 import { cobrador } from 'src/models/cobrador.entity';
+import { ruta } from 'src/models/ruta.entity';
 
 export const usuariosProviders = [
   {
@@ -23,6 +24,14 @@ export const cobradorProviders = [
   {
     provide: 'COBRADOR_REPOSITORY',
     useFactory: (connection: Connection) => connection.getRepository(cobrador),
+    inject: ['DATABASE_CONNECTION']
+  }
+];
+
+export const rutasProvider = [
+  {
+    provide: 'RUTA_REPOSITORY',
+    useFactory: (connection: Connection) => connection.getRepository(ruta),
     inject: ['DATABASE_CONNECTION']
   }
 ];
