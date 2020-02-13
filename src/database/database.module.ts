@@ -2,19 +2,22 @@ import { Module } from '@nestjs/common';
 import { databaseProviders } from './database.providers';
 import { 
     usuariosProviders,
-    clientesProviders 
+    clientesProviders,
+    cobradorProviders 
 } from "./Entitys.providers";
 
 @Module({
     providers: [
         ...databaseProviders, 
         ...usuariosProviders,
-        ...clientesProviders
+        ...clientesProviders,
+        ...cobradorProviders
     ],
     exports: [
         ...databaseProviders, 
         ...usuariosProviders,
-        ...clientesProviders
+        ...clientesProviders,
+        ...cobradorProviders
     ],
 })
 
