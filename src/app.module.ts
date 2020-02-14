@@ -7,20 +7,22 @@ import { InicioSesionController } from "./controllers/incioSesion.controller";
 import { clientesController } from "./controllers/cliente.controller";
 import { cobradoresController } from './controllers/cobradores.controller';
 import { rutaController } from './controllers/ruta.controller';
+import { tipoGastoController } from './controllers/tipoGasto.controller';
 
 import { AppService } from "./services/app.service";
 import { InicioSesionService } from "./services/InicioSesion.service";
 import { clienteService } from "./services/cliente.service";
 import { cobradorService } from './services/cobrador.service';
 import { rutaService } from './services/rutas.service';
+import { tipoGastoService } from './services/tipoGasto.service';
 
 @Module({
   imports: [
     TypeOrmModule,
     DatabaseModule
   ],
-  controllers: [AppController, InicioSesionController, clientesController, cobradoresController, rutaController],
-  providers: [AppService, InicioSesionService, clienteService, cobradorService, rutaService],
+  controllers: [AppController, InicioSesionController, clientesController, cobradoresController, rutaController, tipoGastoController],
+  providers: [AppService, InicioSesionService, clienteService, cobradorService, rutaService, tipoGastoService],
 })
 
 export class AppModule { }
