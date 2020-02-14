@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
 import { Types } from "mariadb";
+import { gasto } from "./gasto.entity";
 
 
 @Entity()
@@ -76,4 +77,7 @@ export class cobrador {
     @ApiProperty()
     @Column({default: 0, nullable: false, comment: '0 cobrador 1 administrador'})
     uni: Types.TINY;
+
+    @OneToMany(type => gasto, gastos => gastos.cobrador)
+    gastos: gasto[];
 }

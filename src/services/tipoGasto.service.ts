@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@nestjs/common";
-import { Repository } from "typeorm";
+import { Repository, createQueryBuilder } from "typeorm";
 import { tipo_gasto } from "src/models/tipoGasto.entity";
 
 @Injectable()
@@ -16,6 +16,13 @@ export class tipoGastoService {
         return await this.tipoGastoRepository.findOne(Id);
     }
 
+    async getGastosAsociados(Id: number): Promise<any> {
+        const gastoAsociado = createQueryBuilder('tipo_gasto')
+        .leftJoinAndSelect('tipo_gasto.GastosAsociados', 'gasto')
+        .where('tipo_gasto.id_tipo_gasto = :Id', { Id: Id })
+        .getOne();
+        return gastoAsociado;
+    }
     async setTipoGasto(tipoGasto: tipo_gasto) {
         return this.tipoGastoRepository.save(tipoGasto);
     }

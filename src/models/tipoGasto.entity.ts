@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Types } from "mariadb";
+import { gasto } from "./gasto.entity";
 
 @Entity()
 export class tipo_gasto {
@@ -20,4 +21,7 @@ export class tipo_gasto {
 
     @Column({ default: '00:00:00' , nullable: false})
     hora_actualizacion_tipo_gasto: Types.TIME;
+
+    @OneToMany(type => gasto, gastos => gastos.tipo_gasto)
+    GastosAsociados: gasto[];
 }

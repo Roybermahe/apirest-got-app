@@ -18,6 +18,11 @@ export class tipoGastoController {
         return params.Auth && params.Id ? await this.tipoGastoService.getTipoGasto(<number>params.Id) : null;
     }
 
+    @Get('Gastos/:Auth/:Id')
+    async geTGastosAsociados(@Param() params: any) {
+        return params.Auth && params.Id ? await this.tipoGastoService.getGastosAsociados(<number>params.Id) : null;
+    }
+
     @Post(':Auth')
     async setTipoGasto(@Param() params: any, @Body() body: tipo_gasto) {
         return params.Auth && body ? await this.tipoGastoService.setTipoGasto(body) : null;

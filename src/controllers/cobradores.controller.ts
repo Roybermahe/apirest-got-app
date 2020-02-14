@@ -1,6 +1,7 @@
 import { Controller, Param, Get, Post, Body, Put, Delete } from "@nestjs/common";
 import { cobradorService } from "src/services/cobrador.service";
 import { cobrador } from "src/models/cobrador.entity";
+import { gastoService } from "src/services/gasto.service";
 
 @Controller('Cobradores')
 export class cobradoresController {
@@ -17,6 +18,11 @@ export class cobradoresController {
     async getCobrador(@Param() params : any) {
         return params.Auth && params.Id ? await this.cobradorService.getCobrador(<number>params.Id): null;
     }
+
+    @Get('Gastos/:Auth/:Id') 
+    async getGastosCobrador(@Param() params : any) {
+        return params.Auth && params.Id ? this.cobradorService.getGastosCobrador(<number>params.Id) : null;
+    } 
 
     @Post(':Auth')
     async postCobrador(@Param() params: any, @Body() cobrador: cobrador) {
