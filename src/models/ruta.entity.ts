@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn } from "t
 import { Types } from "mariadb";
 import { ApiProperty } from "@nestjs/swagger";
 import { cliente_en_ruta } from "./clienteRuta.entity";
+import { cobrador_en_ruta } from "./cobradorRuta.entity";
 
 
 @Entity()
@@ -40,4 +41,7 @@ export class ruta {
 
     @OneToMany(type => cliente_en_ruta, clienteRutas => clienteRutas.ruta)
     clienteRutas: cliente_en_ruta[];
+
+    @OneToMany(type => cobrador_en_ruta, cobradorRutas => cobradorRutas.ruta)
+    cobradorRutas: cobrador_en_ruta[];
 }

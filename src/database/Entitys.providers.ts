@@ -6,6 +6,7 @@ import { ruta } from 'src/models/ruta.entity';
 import { tipo_gasto } from 'src/models/tipoGasto.entity';
 import { gasto } from 'src/models/gasto.entity';
 import { cliente_en_ruta } from 'src/models/clienteRuta.entity';
+import { cobrador_en_ruta } from 'src/models/cobradorRuta.entity';
 
 export const usuariosProviders = [
   {
@@ -59,6 +60,14 @@ export const ClienteRutaProvider = [
   {
     provide: 'CLIENTE_RUTA_REPOSITORY',
     useFactory: (connection: Connection) => connection.getRepository(cliente_en_ruta),
+    inject: ['DATABASE_CONNECTION']
+  }
+];
+
+export const CobradorRutaProvider = [
+  {
+    provide: 'COBRADOR_RUTA_REPOSITORY',
+    useFactory: (connection: Connection) => connection.getRepository(cobrador_en_ruta),
     inject: ['DATABASE_CONNECTION']
   }
 ];

@@ -8,7 +8,8 @@ import {
     rutasProvider,
     TiposDeGastoProvider,
     GastoProvider,
-    ClienteRutaProvider
+    ClienteRutaProvider,
+    CobradorRutaProvider
 } from "./Entitys.providers";
 
 @Module({
@@ -20,7 +21,8 @@ import {
         ...rutasProvider,
         ...TiposDeGastoProvider,
         ...GastoProvider,
-        ...ClienteRutaProvider
+        ...ClienteRutaProvider,
+        ...CobradorRutaProvider
     ],
     exports: [
         ...databaseProviders, 
@@ -30,7 +32,8 @@ import {
         ...rutasProvider,
         ...TiposDeGastoProvider,
         ...GastoProvider,
-        ...ClienteRutaProvider
+        ...ClienteRutaProvider,
+        ...CobradorRutaProvider
     ],
 })
 

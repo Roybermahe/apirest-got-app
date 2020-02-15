@@ -24,6 +24,11 @@ export class cobradoresController {
         return params.Auth && params.Id ? this.cobradorService.getGastosCobrador(<number>params.Id) : null;
     } 
 
+    @Get('EnRutas/:Auth/:Id') 
+    async getCobradorEnRutas(@Param() params : any) {
+        return params.Auth && params.Id ? this.cobradorService.getCobradorRutas(<number>params.Id) : null;
+    } 
+
     @Post(':Auth')
     async postCobrador(@Param() params: any, @Body() cobrador: cobrador) {
         return params.Auth ? this.cobradorService.setCobrador(cobrador): null;

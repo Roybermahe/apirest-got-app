@@ -19,7 +19,13 @@ export class rutaService {
     async getClienteEnRutas(Id: number) {
         return await createQueryBuilder('ruta')
         .leftJoinAndSelect('ruta.clienteRutas','clientes_en_ruta')
-        .where('ruta.id_ruta = :Id', { Id: Id }).getOne();
+        .where('ruta.id_ruta', { id_ruta: Id }).getOne();
+    }
+
+    async getCobradorEnRutas(Id: number) {
+        return await createQueryBuilder('ruta')
+        .leftJoinAndSelect('ruta.cobradorRutas','cobrador_en_ruta')
+        .where('ruta.id_ruta', { id_ruta: Id }).getOne();
     }
 
     async setRuta(ruta: ruta) {

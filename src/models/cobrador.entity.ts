@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
 import { Types } from "mariadb";
 import { gasto } from "./gasto.entity";
+import { cobrador_en_ruta } from "./cobradorRuta.entity";
 
 
 @Entity()
@@ -80,4 +81,7 @@ export class cobrador {
 
     @OneToMany(type => gasto, gastos => gastos.cobrador)
     gastos: gasto[];
+
+    @OneToMany(type => cobrador_en_ruta, cobradorRutas => cobradorRutas.cobrador)
+    rutas: cobrador_en_ruta[];
 }

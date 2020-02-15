@@ -1,8 +1,6 @@
 import { Injectable, Inject } from "@nestjs/common";
 import { Repository, createQueryBuilder } from "typeorm";
 import { cobrador } from "src/models/cobrador.entity";
-import { gasto } from "src/models/gasto.entity";
-
 
 @Injectable()
 export class cobradorService {
@@ -22,8 +20,15 @@ export class cobradorService {
     async getGastosCobrador(Id:number): Promise<any> {
         const gastosCobrador = createQueryBuilder('cobrador')
         .leftJoinAndSelect("cobrador.gastos", "gasto")
-        .where('cobrador.id_cobrador', { id_cobrador: Id}).printSql().getOne();
+        .where('cobrador.id_cobrador = :Id', { Id: Id}).getOne();
         return gastosCobrador;
+    }
+
+    async getCobradorRutas(Id:number): Promise<any> {
+        const rutasCobrador = createQueryBuilder('cobrador')
+        .leftJoinAndSelect("cobrador.rutas", "cobrador_en_ruta")
+        .where('cobrador.id_cobrador = :Id', { Id: Id}).getOne();
+        return rutasCobrador;
     }
 
     async setCobrador(cobrador: cobrador) {
