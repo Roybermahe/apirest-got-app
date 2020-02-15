@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@nestjs/common";
-import { Repository, ObjectID } from "typeorm";
+import { Repository, createQueryBuilder } from "typeorm";
 import { cliente } from "src/models/cliente.entity";
 
 @Injectable()
@@ -14,6 +14,12 @@ export class clienteService {
 
     async getCliente(Id: number): Promise<cliente> {
         return (await this.clientesRepo.find()).find(item => item.id_cliente == Id);
+    }
+
+    async getClienteEnRutas(Id: number) {
+        return await createQueryBuilder('cliente')
+        .leftJoinAndSelect('cliente.clientesRuta','clientes_en_ruta')
+        .where('cliente.id_cliente = :Id', { Id: Id }).getOne();
     }
 
     async setCliente(clientes: cliente) {

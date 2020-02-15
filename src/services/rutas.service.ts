@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@nestjs/common";
-import { Repository } from "typeorm";
+import { Repository, createQueryBuilder } from "typeorm";
 import { ruta } from "src/models/ruta.entity";
 
 @Injectable()
@@ -14,6 +14,12 @@ export class rutaService {
 
     async getRuta(Id: number) : Promise<ruta> {
         return (await this.rutaRepository.find()).find(rutaItem => rutaItem.id_ruta == Id);
+    }
+
+    async getClienteEnRutas(Id: number) {
+        return await createQueryBuilder('ruta')
+        .leftJoinAndSelect('ruta.clienteRutas','clientes_en_ruta')
+        .where('ruta.id_ruta = :Id', { Id: Id }).getOne();
     }
 
     async setRuta(ruta: ruta) {

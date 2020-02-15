@@ -17,14 +17,34 @@ import { cobradorService } from './services/cobrador.service';
 import { rutaService } from './services/rutas.service';
 import { tipoGastoService } from './services/tipoGasto.service';
 import { gastoService } from './services/gasto.service';
+import { clientesRutaService } from './services/clientesRuta.service';
+import { clientesRutaController } from './controllers/clientesRuta.controller';
 
 @Module({
   imports: [
     TypeOrmModule,
     DatabaseModule
   ],
-  controllers: [AppController, InicioSesionController, clientesController, cobradoresController, rutaController, tipoGastoController,gastoController],
-  providers: [AppService, InicioSesionService, clienteService, cobradorService, rutaService, tipoGastoService,gastoService],
+  controllers: [
+    AppController, 
+    InicioSesionController, 
+    clientesController, 
+    cobradoresController, 
+    rutaController, 
+    tipoGastoController,
+    gastoController,
+    clientesRutaController
+  ],
+  providers: [
+    AppService, 
+    InicioSesionService, 
+    clienteService, 
+    cobradorService, 
+    rutaService, 
+    tipoGastoService,
+    gastoService, 
+    clientesRutaService
+  ],
 })
 
 export class AppModule { }

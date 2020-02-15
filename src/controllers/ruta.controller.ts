@@ -16,6 +16,11 @@ export class rutaController {
         return params.Auth && params.Id ? this.rutaService.getRuta(<number>params.Id) : null;
     }
 
+    @Get('ClientesRutas/:Auth/:Id')
+    async getClientesRutas(@Param() params: any) {
+        return params.Auth && params.Id ? await this.rutaService.getClienteEnRutas(params.Id) : null;
+    }
+
     @Post(':Auth')
     async GuardarRuta(@Param() params: any, @Body() ruta: ruta) {
         return params.Auth ? this.rutaService.setRuta(ruta) : null;

@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, Timestamp } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany } from "typeorm";
 import { Types } from "mariadb";
 import { ApiProperty } from "@nestjs/swagger";
+import { cliente_en_ruta } from "./clienteRuta.entity";
 
 @Entity()
 export class cliente {
@@ -60,4 +61,7 @@ export class cliente {
     @ApiProperty()
     @Column()
     hora_actualizacion_cliente: Types.TIME;
+
+    @OneToMany(type => cliente_en_ruta, clienteRuta => clienteRuta.cliente)
+    clientesRuta: cliente_en_ruta[];
 }

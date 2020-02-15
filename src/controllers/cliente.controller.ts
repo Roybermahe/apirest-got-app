@@ -11,28 +11,33 @@ export class clientesController {
     ) {}
 
     @Get(':Auth')
-    getClientes(@Param() params: any) {
-        return params.Auth ? this.clienteService.getClientes(): null;
+    async getClientes(@Param() params: any) {
+        return params.Auth ? await this.clienteService.getClientes(): null;
     }
 
     @Get(':Auth/:Id')
-    getCliente(@Param() params: any) {
-        return params.Auth && params.Id ? this.clienteService.getCliente(<number>params.Id) : null; 
+    async getCliente(@Param() params: any) {
+        return params.Auth && params.Id ? await this.clienteService.getCliente(<number>params.Id) : null; 
+    }
+
+    @Get('ClientesRutas/:Auth/:Id')
+    async getClientesRutas(@Param() params: any) {
+        return params.Auth && params.Id ? await this.clienteService.getClienteEnRutas(params.Id) : null;
     }
 
     @Post(':Auth')
-    postClientes(@Param() params: any, @Body() cliente: cliente) {
-        return params.Auth ? this.clienteService.setCliente(cliente): null;
+    async postClientes(@Param() params: any, @Body() cliente: cliente) {
+        return params.Auth ? await this.clienteService.setCliente(cliente): null;
     }
 
     @Put(':Auth')
-    putClientes(@Param() params: any, @Body() cliente: cliente) {
-        return params.Auth ? this.clienteService.setCliente(cliente): null;
+    async putClientes(@Param() params: any, @Body() cliente: cliente) {
+        return params.Auth ? await this.clienteService.setCliente(cliente): null;
     }
 
     @Delete(':Auth')
-    deleteClientes(@Param() params: any, @Body() cliente: cliente) {
-        return params.Auth ? this.clienteService.deleteCliente(cliente): null;
+    async deleteClientes(@Param() params: any, @Body() cliente: cliente) {
+        return params.Auth ? await this.clienteService.deleteCliente(cliente): null;
     }
 
 }

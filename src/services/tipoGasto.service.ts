@@ -17,11 +17,11 @@ export class tipoGastoService {
     }
 
     async getGastosAsociados(Id: number): Promise<any> {
-        const gastoAsociado = createQueryBuilder('tipo_gasto')
+        return await createQueryBuilder('tipo_gasto')
         .leftJoinAndSelect('tipo_gasto.GastosAsociados', 'gasto')
         .where('tipo_gasto.id_tipo_gasto = :Id', { Id: Id })
         .getOne();
-        return gastoAsociado;
+       
     }
     async setTipoGasto(tipoGasto: tipo_gasto) {
         return this.tipoGastoRepository.save(tipoGasto);
