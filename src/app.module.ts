@@ -21,6 +21,10 @@ import { clientesRutaService } from './services/clientesRuta.service';
 import { clientesRutaController } from './controllers/clientesRuta.controller';
 import { cobradorRutaService } from './services/cobradorRuta.service';
 import { cobradorRutasController } from './controllers/cobradorRuta.controller';
+import { abonoController } from './controllers/abono.controller';
+import { abonoService } from './services/abono.service';
+import { creditosController } from './controllers/creditos.controller';
+import { creditoService } from './services/creditos.service';
 
 @Module({
   imports: [
@@ -36,7 +40,9 @@ import { cobradorRutasController } from './controllers/cobradorRuta.controller';
     tipoGastoController,
     gastoController,
     clientesRutaController,
-    cobradorRutasController
+    cobradorRutasController,
+    abonoController,
+    creditosController
   ],
   providers: [
     AppService, 
@@ -47,7 +53,9 @@ import { cobradorRutasController } from './controllers/cobradorRuta.controller';
     tipoGastoService,
     gastoService, 
     clientesRutaService,
-    cobradorRutaService
+    cobradorRutaService,
+    abonoService,
+    creditoService
   ],
 })
 

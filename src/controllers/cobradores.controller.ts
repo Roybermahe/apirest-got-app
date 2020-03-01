@@ -27,6 +27,16 @@ export class cobradoresController {
     @Get('EnRutas/:Auth/:Id') 
     async getCobradorEnRutas(@Param() params : any) {
         return params.Auth && params.Id ? this.cobradorService.getCobradorRutas(<number>params.Id) : null;
+    }
+
+    @Get('AbonosAsociados/:Auth/:Id') 
+    async getAbonosAsociados(@Param() params : any) {
+        return params.Auth && params.Id ? this.cobradorService.AbonosRelacionados(<number>params.Id) : null;
+    }
+
+    @Get('CreditosAsociados/:Auth/:Id') 
+    async getCreditosAsociados(@Param() params : any) {
+        return params.Auth && params.Id ? this.cobradorService.CreditosRelacionados(<number>params.Id) : null;
     } 
 
     @Post(':Auth')

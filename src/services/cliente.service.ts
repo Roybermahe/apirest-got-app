@@ -22,6 +22,12 @@ export class clienteService {
         .where('cliente.id_cliente = :Id', { Id: Id }).getOne();
     }
 
+    async creditosAsociados(Id: number) {
+        return await createQueryBuilder('cliente')
+        .leftJoinAndSelect('cliente.credito','credito')
+        .where('cliente.id_cliente = :Id', { Id: Id }).getOne();
+    }
+
     async setCliente(clientes: cliente) {
         return this.clientesRepo.save(clientes);
     }

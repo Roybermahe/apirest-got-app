@@ -25,6 +25,11 @@ export class clientesController {
         return params.Auth && params.Id ? await this.clienteService.getClienteEnRutas(params.Id) : null;
     }
 
+    @Get('CreditosAsociados/:Auth/:Id')
+    async getCreditosAsociados(@Param() params: any) {
+        return params.Auth && params.Id ? await this.clienteService.creditosAsociados(params.Id) : null;
+    }
+
     @Post(':Auth')
     async postClientes(@Param() params: any, @Body() cliente: cliente) {
         return params.Auth ? await this.clienteService.setCliente(cliente): null;

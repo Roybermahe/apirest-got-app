@@ -24,6 +24,20 @@ export class cobradorService {
         return gastosCobrador;
     }
 
+    async AbonosRelacionados(Id: number): Promise<any> {
+        return await createQueryBuilder('cobrador')
+        .leftJoinAndSelect('cobrador.abonos', 'abono')
+        .where('cobrador.id_cobrador = :Id', { Id: Id })
+        .getOne();
+    }
+
+    async CreditosRelacionados(Id: number): Promise<any> {
+        return await createQueryBuilder('cobrador')
+        .leftJoinAndSelect('cobrador.creditos', 'credito')
+        .where('cobrador.id_cobrador = :Id', { Id: Id })
+        .getOne();
+    }
+
     async getCobradorRutas(Id:number): Promise<any> {
         const rutasCobrador = createQueryBuilder('cobrador')
         .leftJoinAndSelect("cobrador.rutas", "cobrador_en_ruta")
