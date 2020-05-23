@@ -24,6 +24,11 @@ export class creditosController {
         return params.Auth && params.Id ? await this.creditoService.AbonosRelacionados(<number>params.Id) : null;
     }
 
+    @Get('clientesAsociados/:Auth')
+    async getClientesAsociados(@Param() params : any) {
+        return params.Auth ? await this.creditoService.creditosClienteRelacionados() : null;
+    }
+
     @Post(':Auth')
     async guardarCredito(@Param() params : any, @Body() body: credito) {
         return params.Auth && body ? await this.creditoService.setCredito(body) : null;
@@ -34,8 +39,8 @@ export class creditosController {
         return params.Auth && body ? await this.creditoService.setCredito(body) : null;
     }
 
-    @Delete(':Auth')
-    async deleteCredito(@Param() params : any, @Body() body: credito) {
-        return params.Auth && body ? await this.creditoService.deleteCredito(body) : null;
+    @Delete(':Auth/:Id')
+    async deleteCredito(@Param() params : any) {
+        return params.Auth && params.Id ? await this.creditoService.deleteCredito(params.Id) : null;
     }
 }

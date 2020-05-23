@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@nestjs/common";
-import { Repository, createQueryBuilder } from "typeorm";
+import { Repository, createQueryBuilder, ObjectID } from "typeorm";
 import { credito } from "src/models/credito.entity";
 
 @Injectable()
@@ -23,11 +23,20 @@ export class creditoService {
         .getOne();
     }
 
+    async creditosClienteRelacionados(): Promise<any> {
+        return await createQueryBuilder('credito')
+        .innerJoinAndSelect('credito.ClienteCredito', 'cliente')
+        .where('credito.id_credito = :Id', { Id: 2 })
+        .getOne();
+    }
+
     async setCredito(credito: credito) {
         return await this.creditoRepository.save(credito);
     }
 
-    async deleteCredito(credito: credito) {
-        return await this.creditoRepository.delete(credito.id_credito);
+    async deleteCredito(Id: number) {
+        let creditos: credito[] = [];
+        creditos.push((await this.getCredito(Id)));
+        return await this.creditoRepository.remove(creditos);
     }
 }

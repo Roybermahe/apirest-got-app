@@ -10,13 +10,13 @@ export class credito {
     id_credito: number;
 
     @Column({ type: "decimal", scale: 2, precision: 15, default: 0.00, nullable: false })
-    valor_credito: Types.DECIMAL;
+    valor_credito: number;
 
     @Column({ type: "decimal", scale: 2, precision: 15, default: 0.00, nullable: false })
-    valor_abonado_credito: Types.DECIMAL;
+    valor_abonado_credito: number;
 
     @Column({ type: "decimal", scale: 2, precision: 2, default: 0.00, nullable: false })
-    valor_restante_credito: Types.DECIMAL;
+    valor_restante_credito: number = (this.valor_credito - this.valor_abonado_credito);
 
     @Column({ type: "date", default: '2000-01-01', nullable: false })
     fecha_registro_credito: Date;
@@ -33,11 +33,11 @@ export class credito {
     @Column({ type: "int", default: 1, nullable: false })
     cliente_credito: Types.INT24;
 
-    @Column({ type: "int", nullable: false })
+    @Column({ type: "int", nullable: true })
     registrado_por_credito: Types.INT24;
 
     @Column({ type: "decimal", scale: 2, precision: 15, default: 0.00, nullable: false })
-    porcentaje_credito: Types.DECIMAL;
+    porcentaje_credito: number;
 
     @Column({ type: "int", default: 0, nullable: false })
     pago_a_credito: Types.INT24;
@@ -49,7 +49,7 @@ export class credito {
     eliminado_credito: Types.INT24;
 
     @Column({ type: "int", default: 0, nullable: false })
-    numero_cuotas_credito: Types.INT24;
+    numero_cuotas_credito: number;
 
     @Column({ type: "decimal", scale: 2, precision: 15, default: 0.00, nullable: false })
     gasto_papeleria: Types.DECIMAL;
@@ -61,7 +61,7 @@ export class credito {
     cuotas_pagas_credito: Types.INT24;
 
     @Column({ type: "decimal", scale: 2, precision: 15, default: 0.00, nullable: false })
-    valor_cuota_credito: Types.DECIMAL;
+    valor_cuota_credito: number = ((this.valor_restante_credito*(this.porcentaje_credito/100)) + this.valor_restante_credito) / this.numero_cuotas_credito;
 
     @Column({ type: "int", default: 0, nullable: false })
     numero_cuotas_canceladas_credito: Types.INT24;

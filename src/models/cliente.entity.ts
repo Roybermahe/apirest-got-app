@@ -48,19 +48,19 @@ export class cliente {
     fecha_nacimiento_cliente: Date;
 
     @ApiProperty()
-    @Column({ type: "date" })
+    @Column({ type: "date" , default: '2000-01-01' })
     fecha_registro_cliente: Date;
 
     @ApiProperty()
-    @Column({ type: "time" })
+    @Column({ type: "time", default: '00:00:00'  })
     hora_registro_cliente: Types.TIME;
 
     @ApiProperty()
-    @Column({ type: "date" })
+    @Column({ type: "date" , default: '2000-01-01' })
     fecha_actualizacion_cliente: Date;
 
     @ApiProperty()
-    @Column({ type: "time" })
+    @Column({ type: "time" , default: '00:00:00' })
     hora_actualizacion_cliente: Types.TIME;
 
     @OneToMany(type => cliente_en_ruta, clienteRuta => clienteRuta.cliente)
