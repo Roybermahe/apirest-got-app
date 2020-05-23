@@ -1,5 +1,5 @@
-import { Injectable, Inject, Options } from "@nestjs/common";
-import { Repository, ObjectID } from "typeorm";
+import { Injectable, Inject } from "@nestjs/common";
+import { Repository } from "typeorm";
 import { usuarios } from "../models/usuarios.entity";
 let md5 = require('blueimp-md5');
 @Injectable()

@@ -4,7 +4,7 @@ import { usuarios } from "src/models/usuarios.entity";
 let md5 = require('blueimp-md5');
 
 @Controller('InicioSesion')
-export class InicioSesion {
+export class InicioSesionController {
     constructor(private readonly sesion: InicioSesionService) { }
 
     @Get()

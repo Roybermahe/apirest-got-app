@@ -8,14 +8,14 @@ export class usuarios {
     Id?: number;
 
     @ApiProperty()
-    @Column({ length: 20 })
+    @Column({ type: "varchar", length: 20 })
     User: string;
 
     @ApiProperty()
-    @Column({ length: 300 })
+    @Column({ type: "varchar", length: 300 })
     Pass: string;
 
     @ApiProperty()
-    @Column({ length: 3 })
+    @Column({ type: "varchar", length: 3 })
     Type?: string;
 }
